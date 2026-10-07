@@ -114,3 +114,60 @@ function gameObject() {
         },
     };
 }
+function numPointsScored(playerName) {
+    const player = findPlayer(playerName);
+    if (player) {
+        return player.points;
+    }
+    return "Player not found";
+}
+
+function teamNames(){
+    const game = gameObject();
+    return [game.home.teamName, game.away.teamName];
+}
+
+function playerNumbers(teamName) {
+    const game = gameObject();
+    let targetPlayers = null;
+
+    if (game.home.teamName === teamName) {
+        targetPlayers = game.home.players;
+    }else if (game.away.teamName === teamName) {
+        targetPlayers = game.away.players;
+    } else {
+        return "Team not found";
+    }
+    const numbers = []
+
+    for (let Player in targetPlayers) {
+        numbers.push(targetPlayers[player].number);
+    }
+
+    return numbers;
+}
+
+function playerStats(playerName){
+    const game = gameObject();
+
+    if (game.home.players[playerName]){
+        return game.home.players[playerName];
+    }
+    return "Player not found";
+}
+
+function playerStats(playerName) {
+    const game = gameObject();
+
+    // Check home team players
+    if (game.home.players[playerName]) {
+        return game.home.players[playerName];
+    }
+
+    // Check away team players
+    if (game.away.players[playerName]) {
+        return game.away.players[playerName];
+    }
+
+    return "Player not found";
+}
